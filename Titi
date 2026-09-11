@@ -1,0 +1,74 @@
+import tkinter as tk
+
+def matematica_projeto(numero1, numero2, operaçoes, resultado):
+    operaçoes = operacao.get()
+    numero1 = int(valor1.get())
+    numero2 = int(valor2.get())
+
+    if operaçoes == "+":
+        resultado = numero1 + numero2
+        resposta.config(text=f"o resultado da soma é: {resultado}")
+
+    elif operaçoes == "-":
+        resultado = numero1 - numero2
+        resposta.config(text=f"o resultado da subtraçao é: {resultado}")
+
+    if operaçoes == "*":
+        resultado = numero1 * numero2
+        resposta.config(text=f"o resultado da multiplicaçao é: {resultado}")
+
+    elif operaçoes == "/":
+        resultado = numero1 / numero2
+        resposta.config(text=f"o resultado da divisao é: {resultado}")
+
+    if operaçoes == "//":
+        resultado = numero1 // numero2
+        resposta.config(text=f"o resultado da divisão inteira é: {resultado}")
+
+    elif operaçoes == "%":
+        resultado = numero1 % numero2
+        resposta.config(text=f"o resultado do resto da divisão é: {resultado}")
+
+    if operaçoes == "**":
+        resultado = numero1 ** numero2
+        resposta.config(text=f"o resultado da potencia é: {resultado}")
+
+
+janela = tk.Tk()
+janela.title("LV Math")
+janela.geometry("350x400")
+
+tk.Label(janela, text="bem vindo ao Lv Math").pack()
+tk.Label(janela, text="as operações disponiveis no Lv math são").pack()
+tk.Label(janela, text="soma: +").pack()
+tk.Label(janela, text="subtração: -").pack()
+tk.Label(janela, text="multiplicação: *").pack()
+tk.Label(janela, text="divião: /").pack()
+tk.Label(janela, text="divião inteira: //").pack()
+tk.Label(janela, text="resto da divisão: %").pack()
+tk.Label(janela, text="potencia: **").pack()
+
+tk.Label(janela, text="Escolha o tipo da operação").pack()
+
+operacao = tk.StringVar()
+operacao.set("+")
+
+tk.OptionMenu(janela, operacao, "+", "-", "*", "/", "//", "%", "**").pack()
+
+tk.Label(janela, text="Primeiro valor").pack()
+valor1 = tk.Entry(janela)
+valor1.pack()
+
+tk.Label(janela, text="Segundo valor").pack()
+valor2 = tk.Entry(janela)
+valor2.pack()
+
+tk.Button(janela, text="Calcular",
+          command=lambda: matematica_projeto(
+              valor1.get(), valor2.get(), operacao.get(), 0
+          )).pack()
+
+resposta = tk.Label(janela, text="")
+resposta.pack()
+
+janela.mainloop()
